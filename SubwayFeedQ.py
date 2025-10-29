@@ -1,40 +1,35 @@
+from google.transit import gtfs_realtime_pb2
 import requests
-import json
+import time
 
-# MTA real-time feed for N, Q, R, and W lines
-url = "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/nyct%2Fgtfs-nqrw.json"
+# Real-time feed for NQRW lines
+url = "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/nyct%2Fgtfs-nqrw"
 
-headers = {
-    "Content-Type": "application/json"
-}
+feed = gtfs_realtime_pb2.FeedMessage()
+response = requests.get(url)
+feed.ParseFromString(response.content)
 
-# Send GET request
-response = requests.get(url, headers=headers)
+target_stop = "D37N"  # Example: Times Sq southbound platform
 
-if response.status_code == 200:
-    try:
-        data = response.json()  # Convert response to JSON
+now = time.time()
+arrivals = []
 
-        q_line_data = []
-        for entry in data.get("entity", []):
-            trip_update = entry.get("trip_update")
-            if not trip_update:
-                continue
+for entity in feed.entity:
+    if not entity.HasField("trip_update"):
+        continue
 
-            trip = trip_update.get("trip")
-            if not trip:
-                continue
+    trip = entity.trip_update.trip
+    if trip.route_id != "Q":
+        continue
 
-            if trip.get("route_id") == "Q":
-                q_line_data.append(entry)
+    for stu in entity.trip_update.stop_time_update:
+        if stu.stop_id == target_stop and stu.HasField("arrival"):
+            arrival_time = stu.arrival.time
+            minutes = (arrival_time - now) / 60
+            arrivals.append(round(minutes, 1))
 
-        # Save filtered data
-        with open("Q_Train_Arrival.json", "w", encoding="utf-8") as f:
-            json.dump(q_line_data, f, ensure_ascii=False, indent=4)
+arrivals.sort()
 
-        print(f"✅ Saved {len(q_line_data)} Q line records as 'Q_Train_Arrival.json'")
-
-    except json.JSONDecodeError:
-        print("❌ Error: The API did not return valid JSON data.")
-else:
-    print(f"❌ Error: {response.status_code} - {response.text}")
+print(f"Upcoming Q trains at {target_stop}:")
+for m in arrivals[:5]:
+    print(f"→ in {m} minutes")
