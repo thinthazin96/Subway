@@ -1,7 +1,7 @@
 import requests
 import json
 
-# API endpoint and key
+# API endpoint 
 url = "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/camsys%2Fsubway-alerts.json"
 
 headers = {
@@ -14,11 +14,14 @@ filename = "4_5_6_train_delay_alerts.json"
 # Send request
 response = requests.get(url, headers=headers)
 
+#if the respone is OK, get the data in JSON format.
 if response.status_code == 200:
     data = response.json()
     filtered_alerts = []
 
+    # Loop to filter 4, 5 and 6 trains only
     for target_line in target_lines:
+        
         for alert_entity in data.get("entity", []):
             info = alert_entity.get("alert", {})
             informed_entities = info.get("informed_entity", [])
