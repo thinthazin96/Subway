@@ -41,13 +41,13 @@ if response.status_code == 200:
                             "description_text": description
                         })
 
-    # Save to JSON file
-    with open(filename, "w", encoding="utf-8") as f:
-        json.dump(filtered_alerts, f, ensure_ascii=False, indent=4)
+        # Save to JSON file
+        with open(filename, "w", encoding="utf-8") as f:
+            json.dump(filtered_alerts, f, ensure_ascii=False, indent=4)
 
-    if filtered_alerts:
-        print(f"✅ {len(filtered_alerts)} delay alerts saved to '{filename}'")
-    else:
-        print(f"ℹ️ No current delay alerts for the {target_line} train. JSON file saved empty.")
+        if filtered_alerts:
+            print(f"✅ {len(filtered_alerts)} delay alerts saved to '{filename}'")
+        else:
+            print(f"ℹ️ No current delay alerts for the {target_line} train. JSON file saved empty.")
 else:
     print(f"❌ Error: {response.status_code} - {response.text}")
