@@ -1,0 +1,2 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rss version="2.0"><channel><title>My Awesome Feed</title><link>https://example.com</link><description>A feed of my articles</description><item><title>Article 1</title><link>https://example.com/article1</link><description>Description for article 1</description></item><item><title>Article 2</title><link>https://example.com/article2</link><description>Description for article 2</description></item></channel></rss>
