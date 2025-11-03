@@ -1,1 +1,7 @@
-[]
+[
+    {
+        "route_id": "Q",
+        "header_text": "There is:\nNo [B]  service between Prospect Park and Brighton Beach.\nExtremely limited [Q] service between Prospect Park and Coney Island-Stillwell Av.",
+        "description_text": "What's Happening?\nWe're removing a fallen tree from the tracks at Sheepshead Bay.\n\nUpdates:\nUptown [Q] trains are running via [N] line from Coney Island-Stillwell Av to DeKalb Av.\nSome Coney Island-Stillwell Av-bound [Q] trains are rerouted via the [N] line from DeKalb Av to Coney Island-Stillwell Av.\n\nSome Brighton Beach-bound [B] trains are rerouted via the [D] line from DeKalb Av to Coney Island-Stillwell Av.\n\nThe last stop on Brighton Beach-bound [B] and Coney Island-Stillwell Av-bound [Q] trains is Prospect Park or Kings Hwy.\nListen to announcements for how your train will operate.\n\nExpect severe delays in both directions.\n\nAlternatives:\nFor [B] service:\nIn Brooklyn, take a nearby B49 or B68 bus.\nOn 6th Ave in Manhattan, take a [D][F][M] train.\nAlong Central Park West, take a [C] or [1] train.\nIn The Bronx, take a [D] or [4] train.\nFor [Q] service:\nIn Brooklyn, take a nearby B49 or B68 bus.\nIn Manhattan, consider nearby [6] trains on Lexington Ave."
+    }
+]
