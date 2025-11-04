@@ -2,18 +2,18 @@ import json
 from xml.etree.ElementTree import Element, SubElement, tostring
 
 #Function to convert Json to RSS
-def json_to_rss(json_data, title, link, description):
+def json_to_rss(json_data, routeID, headerText, description):
     rss = Element('rss', version='2.0')
     channel = SubElement(rss, 'channel')
-    SubElement(channel, 'title').text = title
-    SubElement(channel, 'link').text = link
+    SubElement(channel, 'routeID').text = routeID
+    SubElement(channel, 'headerText').text = headerText
     SubElement(channel, 'description').text = description
 
     #Loop each key and value in each array.
     for item_data in json_data:
         item = SubElement(channel, 'item')
-        SubElement(item, 'title').text = item_data.get('title')
-        SubElement(item, 'link').text = item_data.get('link')
+        SubElement(item, 'routeID').text = item_data.get('routeID')
+        SubElement(item, 'headerText').text = item_data.get('headerText')
         SubElement(item, 'description').text = item_data.get('description')
         # Add other RSS elements as needed (pubDate, guid, etc.)
 
@@ -23,8 +23,7 @@ def json_to_rss(json_data, title, link, description):
 # Sample JSON data
 json_input = """
 [
-    {"title": "Article 1", "link": "https://example.com/article1", "description": "Description for article 1"},
-    {"title": "Article 2", "link": "https://example.com/article2", "description": "Description for article 2"}
+    {"routeID": "Q", "headerText": "No [B] service between Prospect Park and Brighton Beach.Extremely limited [Q] service between Prospect Park and Coney Island-Stillwell Av.", "description": "What's Happening?We're removing a fallen tree from the tracks at Sheepshead Bay."}
 ]
 """
 #Load Json data
