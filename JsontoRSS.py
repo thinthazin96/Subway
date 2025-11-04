@@ -23,7 +23,8 @@ def json_to_rss(json_data, routeID, headerText, description):
 # Sample JSON data
 json_input = """
 [
-    {"routeID": "Q", "headerText": "No [B] service between Prospect Park and Brighton Beach.Extremely limited [Q] service between Prospect Park and Coney Island-Stillwell Av.", "description": "What's Happening?We're removing a fallen tree from the tracks at Sheepshead Bay."}
+    {"routeID": "Article 1", "headerText": "https://example.com/article1", "description": "Description for article 1"},
+    {"routeID": "Article 2", "headerText": "https://example.com/article2", "description": "Description for article 2"}
 ]
 """
 #Load Json data
