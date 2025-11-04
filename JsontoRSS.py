@@ -23,8 +23,7 @@ def json_to_rss(json_data, routeID, headerText, description):
 # Sample JSON data
 json_input = """
 [
-    {"routeID": "Article 1", "headerText": "https://example.com/article1", "description": "Description for article 1"},
-    {"routeID": "Article 2", "headerText": "https://example.com/article2", "description": "Description for article 2"}
+    {"routeID": "Q", "headerText": "No [B] service between Prospect Park and Brighton Beach.Extremely limited [Q] service between Prospect Park and Coney Island-Stillwell Av.", "description": "What's Happening?We're removing a fallen tree from the tracks at Sheepshead Bay."}
 ]
 """
 #Load Json data
@@ -33,9 +32,9 @@ data = json.loads(json_input)
 #Call json_to_rss function to convert the file
 rss_output = json_to_rss(data, "My Awesome Feed", "https://example.com", "A feed of my articles")
 
-with open("SubwayRSS.xml", "w") as f:
+with open("SubwayRSSv1.xml", "w") as f:
     f.write(rss_output)
-print("File 'SubwayRSS.xml' created/overwritten.")
+print("File 'SubwayRSSv1.xml' created/overwritten.")
 
 #print out the rss file
 print(rss_output)
