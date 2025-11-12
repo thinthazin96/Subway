@@ -32,9 +32,9 @@ data = json.loads(json_input)
 #Call json_to_rss function to convert the file
 rss_output = json_to_rss(data, "My Awesome Feed", "https://example.com", "A feed of my articles")
 
-with open("SubwayRSSv1.xml", "w") as f:
+with open("SubwayRSS.xml", "w") as f:
     f.write(rss_output)
-print("File 'SubwayRSSv1.xml' created/overwritten.")
+print("File 'SubwayRSS.xml' created/overwritten.")
 
 #print out the rss file
 print(rss_output)
