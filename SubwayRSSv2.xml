@@ -1,26 +1,2 @@
 <?xml version='1.0' encoding='utf-8'?>
-<rss version="2.0"><channel><title>NYC Subway Service Alerts</title><link>https://www.mta.info/</link><description>Live MTA subway service updates</description><language>en-us</language><lastBuildDate>Wed, 12 Nov 2025 20:58:17 GMT</lastBuildDate><item><title>There is:
-No [B]  service between Prospect Park and Brighton Beach.
-Extremely limited [Q] service between Prospect Park and Coney Island-Stillwell Av.</title><description>What's Happening?
-We're removing a fallen tree from the tracks at Sheepshead Bay.
-
-Updates:
-Uptown [Q] trains are running via [N] line from Coney Island-Stillwell Av to DeKalb Av.
-Some Coney Island-Stillwell Av-bound [Q] trains are rerouted via the [N] line from DeKalb Av to Coney Island-Stillwell Av.
-
-Some Brighton Beach-bound [B] trains are rerouted via the [D] line from DeKalb Av to Coney Island-Stillwell Av.
-
-The last stop on Brighton Beach-bound [B] and Coney Island-Stillwell Av-bound [Q] trains is Prospect Park or Kings Hwy.
-Listen to announcements for how your train will operate.
-
-Expect severe delays in both directions.
-
-Alternatives:
-For [B] service:
-In Brooklyn, take a nearby B49 or B68 bus.
-On 6th Ave in Manhattan, take a [D][F][M] train.
-Along Central Park West, take a [C] or [1] train.
-In The Bronx, take a [D] or [4] train.
-For [Q] service:
-In Brooklyn, take a nearby B49 or B68 bus.
-In Manhattan, consider nearby [6] trains on Lexington Ave.</description><guid>Unknown Route</guid><pubDate>Wed, 12 Nov 2025 20:58:17 GMT</pubDate></item></channel></rss>
+<rss version="2.0"><channel><title>NYC Subway Service Alerts</title><link>https://www.mta.info/</link><description>Live MTA subway service updates</description><language>en-us</language><lastBuildDate>Wed, 12 Nov 2025 21:09:12 GMT</lastBuildDate><item><title>No [B]  service between Prospect Park and Brighton Beach.</title><description>What's Happening? We're removing a fallen tree from the tracks at Sheepshead Bay.</description><guid>Unknown Route</guid><pubDate>Wed, 12 Nov 2025 21:09:12 GMT</pubDate></item></channel></rss>
