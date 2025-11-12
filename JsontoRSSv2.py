@@ -17,37 +17,38 @@ def json_to_rss(json_data, channel_title, channel_link, channel_description):
     # Loop through each JSON entry and create an <item>
     for item_data in json_data:
         item = SubElement(channel, 'item')
-        SubElement(item, 'title').text = item_data.get('headerText', 'No Title')
-        SubElement(item, 'description').text = item_data.get('description', 'No Description')
-        SubElement(item, 'guid').text = item_data.get('routeID', 'Unknown Route')
+        SubElement(item, 'title').text = item_data.get('header_text', 'No Title')
+        SubElement(item, 'description').text = item_data.get('description_text', 'No Description')
+        SubElement(item, 'guid').text = item_data.get('roud_id', 'Unknown Route')
         SubElement(item, 'pubDate').text = datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT')
-        # Optional: add a link for each item (if applicable)
+
+        # Optional: include link if available in JSON
         if 'link' in item_data:
             SubElement(item, 'link').text = item_data['link']
 
-    # Convert to string with XML declaration
+    # Convert XML to text
     return tostring(rss, encoding='utf-8', xml_declaration=True).decode('utf-8')
 
-# Sample JSON input
-json_input = """
-[
-    {
-        "routeID": "Q",
-        "headerText": "No [B] service between Prospect Park and Brighton Beach. Extremely limited [Q] service between Prospect Park and Coney Island-Stillwell Av.",
-        "description": "We're removing a fallen tree from the tracks at Sheepshead Bay."
-    }
-]
-"""
 
-# Load JSON
-data = json.loads(json_input)
+# === Main Script ===
+
+# Path to your JSON file
+json_file_path = "4_5_6_train_delay_alerts.json"
+
+# Read the JSON input from file
+with open(json_file_path, "r", encoding="utf-8") as f:
+    data = json.load(f)
 
 # Convert JSON to RSS
-rss_output = json_to_rss(data, "NYC Subway Service Alerts", "https://example.com/subway-alerts", "Live MTA subway service updates")
+rss_output = json_to_rss(
+    data,
+    channel_title="NYC Subway Service Alerts",
+    channel_link="https://www.mta.info/",
+    channel_description="Live MTA subway service updates"
+)
 
-# Write to file
-with open("SubwayRSS.xml", "w", encoding="utf-8") as f:
+# Write RSS output to file
+with open("SubwayRSSv2.xml", "w", encoding="utf-8") as f:
     f.write(rss_output)
 
 print("✅ File 'SubwayRSS.xml' created successfully.")
-print(rss_output)
