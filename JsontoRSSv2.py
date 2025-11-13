@@ -51,4 +51,4 @@ rss_output = json_to_rss(
 with open("SubwayRSSv2.xml", "w", encoding="utf-8") as f:
     f.write(rss_output)
 
-print("✅ File 'SubwayRSS.xml' created successfully.")
+print("✅ File 'SubwayRSSv2.xml' created successfully.")

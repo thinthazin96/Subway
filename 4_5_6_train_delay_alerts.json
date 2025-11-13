@@ -3,5 +3,10 @@
         "route_id": "Q",
         "header_text": "No [B]  service between Prospect Park and Brighton Beach.",
         "description_text": "What's Happening? We're removing a fallen tree from the tracks at Sheepshead Bay."
+    },
+     {
+        "route_id": "Q",
+        "header_text": "No [Q]  service between Prospect Park and Brighton Beach.",
+        "description_text": "What's Happening? We're removing a fallen tree from the tracks at Sheepshead Bay."
     }
 ]
