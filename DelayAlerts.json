@@ -1,12 +1,12 @@
 [
     {
-        "route_id": "E",
-        "header_text": "[E][F][M][R] trains are running with delays in both directions after emergency teams responded to someone who was struck by a train at 63 Dr-Rego Park.",
-        "description_text": ""
+        "route_id": "B",
+        "header_text": "Downtown [B][C] trains are running with delays after NYPD conducted an investigation at 135 St.",
+        "description_text": "Downtown [B][C] trains are running with delays after NYPD conducted an investigation at 135 St."
     },
     {
-        "route_id": "F",
-        "header_text": "[E][F][M][R] trains are running with delays in both directions after emergency teams responded to someone who was struck by a train at 63 Dr-Rego Park.",
-        "description_text": ""
+        "route_id": "N",
+        "header_text": "Coney Island-Stillwell Av-bound [N] trains are running with delays after we replaced rails near Avenue U.",
+        "description_text": "Coney Island-Stillwell Av-bound [N] trains have resumed making local stops from Kings Hwy to Coney Island-Stillwell Av."
     }
 ]

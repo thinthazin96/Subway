@@ -33,7 +33,7 @@ def json_to_rss(json_data, channel_title, channel_link, channel_description):
 # === Main Script ===
 
 # Path to your JSON file
-json_file_path = "4_5_6_train_delay_alerts.json"
+json_file_path = "DelayAlerts.json"
 
 # Read the JSON input from file
 with open(json_file_path, "r", encoding="utf-8") as f:
@@ -48,7 +48,7 @@ rss_output = json_to_rss(
 )
 
 # Write RSS output to file
-with open("SubwayRSS.xml", "w", encoding="utf-8") as f:
+with open("SubwayRSSTest.xml", "w", encoding="utf-8") as f:
     f.write(rss_output)
 
-print("✅ File 'SubwayRSS.xml' created successfully.")
+print("✅ File 'SubwayRSSTest.xml' created successfully.")
