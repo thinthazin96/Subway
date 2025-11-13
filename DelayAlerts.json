@@ -1,7 +1,12 @@
 [
     {
-        "route_id": "Q",
-        "header_text": "Downtown [N][Q][W] trains are running with delays after NYPD responded to someone being disruptive at Canal St and we addressed a signal problem at Queensboro Plaza.",
+        "route_id": "E",
+        "header_text": "[E][F][M][R] trains are running with delays in both directions after emergency teams responded to someone who was struck by a train at 63 Dr-Rego Park.",
+        "description_text": ""
+    },
+    {
+        "route_id": "F",
+        "header_text": "[E][F][M][R] trains are running with delays in both directions after emergency teams responded to someone who was struck by a train at 63 Dr-Rego Park.",
         "description_text": ""
     }
 ]
