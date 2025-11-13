@@ -10,7 +10,7 @@ def json_to_rss(json_data, channel_title, channel_link, channel_description):
     # Required channel metadata for RSS 2.0
     SubElement(channel, 'title').text = channel_title
     SubElement(channel, 'link').text = channel_link
-    #SubElement(channel, 'description').text = channel_description
+    SubElement(channel, 'description').text = channel_description
     SubElement(channel, 'language').text = 'en-us'
     SubElement(channel, 'lastBuildDate').text = datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT')
 
@@ -18,7 +18,7 @@ def json_to_rss(json_data, channel_title, channel_link, channel_description):
     for item_data in json_data:
         item = SubElement(channel, 'item')
         SubElement(item, 'title').text = item_data.get('header_text', 'No Title')
-        #SubElement(item, 'description').text = item_data.get('description_text', 'No Description')
+        SubElement(item, 'description').text = item_data.get('description_text', 'No Description')
         SubElement(item, 'guid').text = item_data.get('roud_id', 'Unknown Route')
         SubElement(item, 'pubDate').text = datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT')
 
