@@ -9,7 +9,7 @@ headers = {
 }
 
 target_lines = ["4", "5", "6", "Q"]
-filename = "4_5_6_train_delay_alerts.json"
+filename = "DelayAlerts.json"
 
 # Send request
 response = requests.get(url, headers=headers)
