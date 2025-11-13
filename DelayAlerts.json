@@ -1,12 +1,7 @@
 [
     {
-        "route_id": "B",
-        "header_text": "Downtown [B][C] trains are running with delays after NYPD conducted an investigation at 135 St.",
-        "description_text": "Downtown [B][C] trains are running with delays after NYPD conducted an investigation at 135 St."
-    },
-    {
-        "route_id": "N",
-        "header_text": "Coney Island-Stillwell Av-bound [N] trains are running with delays after we replaced rails near Avenue U.",
-        "description_text": "Coney Island-Stillwell Av-bound [N] trains have resumed making local stops from Kings Hwy to Coney Island-Stillwell Av."
+        "route_id": "Q",
+        "header_text": "[Q] trains are delayed entering and leaving Coney Island-Stillwell Av while we request NYPD assistance for someone being disruptive on a train at that station.",
+        "description_text": "[Q] trains are delayed entering and leaving Coney Island-Stillwell Av while we request NYPD assistance for someone being disruptive on a train at that station."
     }
 ]

@@ -8,7 +8,7 @@ headers = {
     "Content-Type": "application/json"
 }
 
-target_lines = ["4", "5", "6", "Q", "B", "N"]
+target_lines = ["4", "5", "6", "Q"]
 filename = "DelayAlerts.json"
 
 # Send request
