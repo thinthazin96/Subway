@@ -1,5 +1,5 @@
 '''
-This file fetch 4,5,6,Q train delay announcement from MTA API.
+This file fetch 4,5,6,Q train delay announcement from MTA API and create JSON file.
 '''
 import requests
 import json
