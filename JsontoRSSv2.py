@@ -1,3 +1,6 @@
+'''
+This file read from data from ServiceAlert456 file and convert Json file to RSS and Generate RSS file.
+'''
 import ServiceAlert456
 import json
 from datetime import datetime
