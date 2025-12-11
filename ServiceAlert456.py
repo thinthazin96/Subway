@@ -1,58 +1,58 @@
-"""
-This file read Json file and create XML file.
-"""
-import ServiceAlert456
+'''
+This file fetch 4,5,6,Q train delay announcement from MTA API.
+'''
+import requests
 import json
-from datetime import datetime
-from xml.etree.ElementTree import Element, SubElement, tostring
 
-def json_to_rss(json_data, channel_title, channel_link, channel_description):
-    # Create root RSS element
-    rss = Element('rss', version='2.0')
-    channel = SubElement(rss, 'channel')
+# API endpoint 
+url = "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/camsys%2Fsubway-alerts.json"
 
-    # Required channel metadata for RSS 2.0
-    SubElement(channel, 'title').text = channel_title
-    SubElement(channel, 'link').text = channel_link
-    SubElement(channel, 'description').text = channel_description
-    SubElement(channel, 'language').text = 'en-us'
-    SubElement(channel, 'lastBuildDate').text = datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT')
+headers = {
+    "Content-Type": "application/json"
+}
 
-    # Loop through each JSON entry and create an <item>
-    for item_data in json_data:
-        item = SubElement(channel, 'item')
-        SubElement(item, 'title').text = item_data.get('header_text', 'No Title')
-        SubElement(item, 'description').text = item_data.get('description_text', 'No Description')
-        SubElement(item, 'guid').text = item_data.get('roud_id', 'Unknown Route')
-        SubElement(item, 'pubDate').text = datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT')
+target_lines = ["4", "5", "6", "Q"]
+filename = "DelayAlerts.json"
 
-        # Optional: include link if available in JSON
-        if 'link' in item_data:
-            SubElement(item, 'link').text = item_data['link']
+# Send request
+response = requests.get(url, headers=headers)
 
-    # Convert XML to text
-    return tostring(rss, encoding='utf-8', xml_declaration=True).decode('utf-8')
+#if the respone is OK, get the data in JSON format.
+if response.status_code == 200:
+    data = response.json()
+    filtered_alerts = []
 
+    # Loop to filter 4, 5 and 6 trains only
+    for target_line in target_lines:
+        
+        for alert_entity in data.get("entity", []):
+            info = alert_entity.get("alert", {})
+            informed_entities = info.get("informed_entity", [])
 
-# === Main Script ===
+            for entity in informed_entities:
+                route = entity.get("route_id", "")
+                if route == target_line:
+                    header = info.get("header_text", {}).get("translation", [{}])[0].get("text", "")
+                    description = info.get("description_text", {}).get("translation", [{}])[0].get("text", "")
+                    if not description:
+                        description = header
+                    full_text = (header + " " + description).lower()
 
-# Path to your JSON file
-json_file_path = "DelayAlerts.json"
+                    if "delay" in full_text:
+                        # Store relevant info in a dictionary
+                        filtered_alerts.append({
+                            "route_id": route,
+                            "header_text": header,
+                            "description_text": description
+                        })
 
-# Read the JSON input from file
-with open(json_file_path, "r", encoding="utf-8") as f:
-    data = json.load(f)
+    # Save to JSON file
+    with open(filename, "w", encoding="utf-8") as f:
+        json.dump(filtered_alerts, f, ensure_ascii=False, indent=4)
 
-# Convert JSON to RSS
-rss_output = json_to_rss(
-    data,
-    channel_title="NYC Subway Service Alerts",
-    channel_link="https://www.mta.info/",
-    channel_description="Live MTA subway service updates"
-)
-
-# Write RSS output to file
-with open("SubwayRSSTest.xml", "w", encoding="utf-8") as f:
-    f.write(rss_output)
-
-print("✅ File 'SubwayRSSTest.xml' created successfully.")
+    if filtered_alerts:
+        print(f"✅ {len(filtered_alerts)} delay alerts saved to '{filename}'")
+    else:
+        print(f"ℹ️ No current delay alerts for the {target_line} train. JSON file saved empty.")
+else:
+    print(f"❌ Error: {response.status_code} - {response.text}")
